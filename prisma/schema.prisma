@@ -11,17 +11,17 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   name String
-  age Int
+  age  Int
   cats Cat[]
 }
 
 model Cat {
-  id Int @id @default(autoincrement())
+  id     Int    @id @default(autoincrement())
   userId Int
-  user User @relation(fields: [userId], references: [id])
-  name String
-  color String
+  user   User   @relation(fields: [userId], references: [id])
+  name   String
+  color  String
   weight Float
 }

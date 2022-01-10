@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Body } from '@nestjs/common';
 import { CatService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 
@@ -7,8 +7,8 @@ export class CatsController {
   constructor(private readonly catService: CatService) {}
 
   @Get()
-  findAll(): string {
-    return 'this object return all cats';
+  findAll(): object {
+    return this.catService.findAll();
   }
 
   @Get('/blue')
