@@ -13,10 +13,7 @@ export class CatsController {
 
   @Get('/blue')
   findBlue(): object {
-    return {
-      data: this.catService.findBlueService(),
-      status: 200,
-    };
+    return this.catService.findBlueService('blue');
   }
 
   @Post()

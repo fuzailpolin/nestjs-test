@@ -32,12 +32,13 @@ export class CatService {
     });
   }
 
-  findBlueService(): object {
-    return {
-      message: 'this object return a blue cat json',
-      name: 'not a name',
-      value: 12,
-    };
+  async findBlueService(catColor: string): Promise<object[]> {
+    const res = await this.cats({
+      where: {
+        color: catColor,
+      },
+    });
+    return res;
   }
 
   async createCat(data: Prisma.CatCreateInput): Promise<Cat> {
@@ -49,6 +50,7 @@ export class CatService {
       return error;
     }
   }
+
   async findAll(): Promise<object> {
     return this.cats({});
   }
