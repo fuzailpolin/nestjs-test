@@ -37,9 +37,15 @@ export class CatService {
     };
   }
 
-  // createCat(): any{
-
-  // }
+  async createCat(data: Prisma.CatCreateInput): Promise<Cat> {
+    try {
+      const res = await this.prisma.cat.create({ data });
+      return res;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
   async findAll(): Promise<object> {
     return this.cats({});
   }
