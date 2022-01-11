@@ -19,8 +19,12 @@ export class CatsController {
     };
   }
 
-  // @Post()
-  // create(@Body() createCatDto: CreateCatDto): object {
-  //   return this.catService.createCat(createCatDto);
-  // }
+  @Post()
+  create(@Body() createCatDto: CreateCatDto): object {
+    const { user, ...rest } = createCatDto;
+    return this.catService.createCat({
+      ...rest,
+      user: { connect: { id: user.id } },
+    });
+  }
 }

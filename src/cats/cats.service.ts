@@ -26,6 +26,9 @@ export class CatService {
       cursor,
       where,
       orderBy,
+      include: {
+        user: true,
+      },
     });
   }
 
